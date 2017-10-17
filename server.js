@@ -13,9 +13,9 @@ hbs.registerPartials(__dirname+'/views/partials');
 app.set('view engine', 'hbs');
 
 
-app.use((req,resp,next)=>{
-  resp.render('maintenance.hbs');
-});
+// app.use((req,resp,next)=>{
+//   resp.render('maintenance.hbs');
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -49,5 +49,11 @@ hbs.registerHelper('getCurrentYear', ()=> {
     resp.send ({errorMsg:'unable message'}
     );
  });
+
+ app.get ('/projects', (req,resp)=>{
+   resp.render('projects.hbs', {
+   pageTitle: 'Projects Page'
+  })
+ })
 
  app.listen(port, ()=>{console.log (`server is now listening at port ${port}`);});
